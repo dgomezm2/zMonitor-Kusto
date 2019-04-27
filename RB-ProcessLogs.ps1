@@ -12,9 +12,9 @@ $Conn = Get-AutomationConnection -Name AzureRunAsConnection
 Add-AzureRmAccount -ServicePrincipal -Tenant $Conn.TenantID -ApplicationId $Conn.ApplicationID -CertificateThumbprint $Conn.CertificateThumbprint
 write-output $dynamicQuery
 # Set service provider Azure storage account and get the context
-$StorageAccountName = "zmonitorcentralservice"
-$StorageContainerName = "csvlogs"
-$StorageAccountKey = "JIeuCwZHdX6xBC9/wF3NgUt/h0aYl0yXoR28OcrImLOu79AGgzt5PFvvRNnmCbne6GCP2teNAi9oLyYoHOU6rg=="
+$StorageAccountName = "<Storage Account Name>"
+$StorageContainerName = "<Container Name>"
+$StorageAccountKey = "<Storage Account Key>"
 $Ctx = New-AzureStorageContext $StorageAccountName -StorageAccountKey $StorageAccountKey
 
 $workspace = Get-AutomationVariable -Name 'OMSResourceGroupName'
@@ -22,8 +22,8 @@ $date = Get-Date -f yyyyMMddHHmm
 # Run the OMS Query Search
 # NOTE : Results are limited to 5000 results by the API
 $TenantId = $Conn.TenantID 
-$ClientID = "b35d8cb4-644f-49e9-8359-e330dc52972d"      
-$ClientSecret = "jrT{G2F:Uuf6sY}|;H+tF/yhL(wTC@3)11Sjx@v*5iw3D4ST^drq+OAJD&WNh"  
+$ClientID = "<App ID>"      
+$ClientSecret = "<App Key>"  
 $resource = "https://api.loganalytics.io"   
 $loginURL = "https://login.microsoftonline.com/$TenantId/oauth2/token"
 $body = @{grant_type = "client_credentials"; resource = $resource; client_id = $ClientID; client_secret = $ClientSecret }

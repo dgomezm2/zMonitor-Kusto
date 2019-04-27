@@ -1,7 +1,7 @@
 
 .\RB-ProcessLogs.ps1 -ReportName "Performance" -dynamicQuery "Perf |  where TimeGenerated > ago(1h)"
 
-.\RB-ProcessLogs.ps1 -ReportName "Performance" -dynamicQuery "Heartbeat| where TimeGenerated > ago(1h)"
+.\RB-ProcessLogs.ps1 -ReportName "Heartbeat" -dynamicQuery "Heartbeat| where TimeGenerated > ago(1h)"
 
 .\RB-ProcessLogs.ps1 -ReportName "Events" -dynamicQuery "Event |  where TimeGenerated > ago(1h)"
 		
